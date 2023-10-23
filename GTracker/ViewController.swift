@@ -60,7 +60,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             montoIngresoTextField.text = ""
         }
     }
-
+       //Lógica tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == gastosTableView {
             return gastos.count
@@ -80,13 +80,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         return cell
     }
+    //Fin lógica tableView
+    
     // Función para cerrar el teclado
       @objc func dismissKeyboard() {
           view.endEditing(true)
       }
       
-      // Implementa el delegado del UITextField para permitir que se cierre el teclado
-      func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    // Implementa el delegado del UITextField para permitir que se cierre el teclado
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
           textField.resignFirstResponder()
           return true
       }
