@@ -60,7 +60,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             montoIngresoTextField.text = ""
         }
     }
-       //Lógica tableView
+    //Lógica tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == gastosTableView {
             return gastos.count
