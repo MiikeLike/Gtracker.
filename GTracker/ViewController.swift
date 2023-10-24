@@ -11,8 +11,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nombreTextField: UITextField!
     @IBOutlet weak var montoTextField: UITextField!
-    @IBOutlet weak var viewBlue: UIImageView!    
+    @IBOutlet weak var viewBlue: UIImageView!  
+    @IBOutlet weak var pieChartView: PieChartView!
     var registrosFinancieros: [registroFinanciero] = []
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         tableView.layer.cornerRadius = 10.0
         viewBlue.layer.cornerRadius = 10.0
+        
+        setupPieChart()
+    }
+    
+    //Creación de gráfico para mostrar el total de ingresos y gastos
+    
+    func setupPieChart() {
+        // Calcular el total de ingresos y gastos
+        let totalIngresos = registrosFinancieros.filter { $0.tipo == .ingreso }.reduce(0) { $0 + $1.monto.doubleValue }
+        let totalGastos = registrosFinancieros.filter { $0.tipo == .gasto }.reduce(0) { $0 + $1.monto.doubleValue }
+
+        // Crear los datos para el gráfico de pastel
+        let ingreso = PieChartDataEntry(value: totalIngresos, label: "Ingresos")
+        let gasto = PieChartDataEntry(value: totalGastos, label: "Gastos")
+        let dataSet = PieChartDataSet(entries: [ingresos, gastos], label: "Resumen Financiero")
+        dataSet.colors = [UIColor.green, UIColor.red] // Colores para ingresos y gastos
+
+        let data = PieChartData(dataSet: dataSet)
+
+        // Configurar el gráfico de pastel
+        pieChartView.data = data
+        pieChartView.drawEntryLabelsEnabled = false // No mostrar etiquetas en las secciones
+        pieChartView.centerText = "Resumen Financiero"
+        pieChartView.holeRadiusPercent = 0.4 // Tamaño del agujero en el centro (opcional)
+        pieChartView.transparentCircleRadiusPercent = 0.5 // Tamaño del círculo transparente alrededor del gráfico (opcional)
     }
     //Creación de función para que el textField de Dinero solo entren datos tipo String
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

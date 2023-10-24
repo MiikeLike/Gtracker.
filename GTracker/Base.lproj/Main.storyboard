@@ -56,21 +56,29 @@
                                     <constraint firstAttribute="width" constant="393" id="peR-4D-hyA"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcQ-X1-UjH" customClass="PieChartView" customModule="GTracker" customModuleProvider="target">
+                                <rect key="frame" x="16" y="453" width="361" height="291"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dv0-P6-qdm" firstAttribute="top" secondItem="hCA-R3-GEB" secondAttribute="top" id="Dkh-Ov-fkb"/>
                             <constraint firstItem="7Bl-Rb-aKl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="E3G-32-pMk"/>
+                            <constraint firstItem="rcQ-X1-UjH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="GL4-yr-Z7J"/>
                             <constraint firstItem="i0V-oh-QRK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OMd-8S-FeD"/>
                             <constraint firstItem="V47-HR-fbq" firstAttribute="leading" secondItem="hCA-R3-GEB" secondAttribute="trailing" constant="10" id="S65-BB-ysB"/>
                             <constraint firstItem="7Bl-Rb-aKl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Sum-yH-WvE"/>
+                            <constraint firstItem="rcQ-X1-UjH" firstAttribute="centerX" secondItem="7Bl-Rb-aKl" secondAttribute="centerX" id="Yei-Jw-sLT"/>
                             <constraint firstItem="hCA-R3-GEB" firstAttribute="leading" secondItem="dv0-P6-qdm" secondAttribute="trailing" constant="10" id="bpk-Bb-eCh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rcQ-X1-UjH" secondAttribute="bottom" constant="25" id="c4y-on-Gvr"/>
                             <constraint firstItem="7Bl-Rb-aKl" firstAttribute="leading" secondItem="dv0-P6-qdm" secondAttribute="leading" id="dbW-51-sNp"/>
                             <constraint firstItem="7Bl-Rb-aKl" firstAttribute="trailing" secondItem="V47-HR-fbq" secondAttribute="trailing" id="gez-e4-Gm9"/>
                             <constraint firstItem="hCA-R3-GEB" firstAttribute="top" secondItem="V47-HR-fbq" secondAttribute="top" id="jmg-wG-TBW"/>
                             <constraint firstItem="7Bl-Rb-aKl" firstAttribute="top" secondItem="i0V-oh-QRK" secondAttribute="bottom" id="jng-fd-vJS"/>
                             <constraint firstItem="dv0-P6-qdm" firstAttribute="top" secondItem="7Bl-Rb-aKl" secondAttribute="bottom" constant="10" id="jxJ-9f-iov"/>
+                            <constraint firstItem="rcQ-X1-UjH" firstAttribute="top" secondItem="dv0-P6-qdm" secondAttribute="bottom" constant="60" id="mMv-kv-pZn"/>
                             <constraint firstItem="7Bl-Rb-aKl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vZh-RN-C4A"/>
                             <constraint firstItem="hCA-R3-GEB" firstAttribute="bottom" secondItem="V47-HR-fbq" secondAttribute="bottom" id="wd2-Be-5sd"/>
                             <constraint firstItem="dv0-P6-qdm" firstAttribute="bottom" secondItem="hCA-R3-GEB" secondAttribute="bottom" id="x45-bF-wdE"/>
