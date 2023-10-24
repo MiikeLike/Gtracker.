@@ -23,7 +23,7 @@
                                     <constraint firstAttribute="height" constant="250" id="tUh-b6-Stb"/>
                                 </constraints>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="246" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre del Gasto" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dv0-P6-qdm">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="246" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dv0-P6-qdm">
                                 <rect key="frame" x="10" y="363" width="130" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="Oq0-hT-C4f"/>
@@ -38,43 +38,15 @@
                                     <constraint firstAttribute="width" constant="90" id="d5O-7i-fbs"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Agregar"/>
                                 <connections>
-                                    <action selector="agregarGasto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Jh-Hb-91i"/>
+                                    <action selector="agregarRegistroFinanciero:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JNN-CN-BTG"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dinero Gastado" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hCA-R3-GEB">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dinero " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hCA-R3-GEB">
                                 <rect key="frame" x="150" y="363" width="133" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yvu-zI-Pcm">
-                                <rect key="frame" x="10" y="403" width="373" height="255"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre del Gasto" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K4l-q3-Zem">
-                                <rect key="frame" x="10" y="668" width="130" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="5Lq-Lr-Fl4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMh-4W-mOK">
-                                <rect key="frame" x="293" y="668" width="90" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Wgq-Ml-WM2"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                                <connections>
-                                    <action selector="agregarIngreso:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EHN-Ri-NoU"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dinero Gastado" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="26d-zX-vBb">
-                                <rect key="frame" x="150" y="668" width="133" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="tel"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i0V-oh-QRK">
                                 <rect key="frame" x="0.0" y="-33" width="393" height="136"/>
@@ -88,46 +60,29 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="yvu-zI-Pcm" firstAttribute="trailing" secondItem="GMh-4W-mOK" secondAttribute="trailing" id="3qN-s8-wOT"/>
-                            <constraint firstItem="K4l-q3-Zem" firstAttribute="top" secondItem="26d-zX-vBb" secondAttribute="top" id="5lc-Bk-U9O"/>
-                            <constraint firstItem="hCA-R3-GEB" firstAttribute="trailing" secondItem="26d-zX-vBb" secondAttribute="trailing" id="6v6-aW-WcT"/>
                             <constraint firstItem="dv0-P6-qdm" firstAttribute="top" secondItem="hCA-R3-GEB" secondAttribute="top" id="Dkh-Ov-fkb"/>
                             <constraint firstItem="7Bl-Rb-aKl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="E3G-32-pMk"/>
-                            <constraint firstItem="yvu-zI-Pcm" firstAttribute="leading" secondItem="K4l-q3-Zem" secondAttribute="leading" id="FWT-Ob-5gB"/>
-                            <constraint firstItem="K4l-q3-Zem" firstAttribute="top" secondItem="yvu-zI-Pcm" secondAttribute="bottom" constant="10" id="J3f-vB-dZj"/>
                             <constraint firstItem="i0V-oh-QRK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OMd-8S-FeD"/>
                             <constraint firstItem="V47-HR-fbq" firstAttribute="leading" secondItem="hCA-R3-GEB" secondAttribute="trailing" constant="10" id="S65-BB-ysB"/>
                             <constraint firstItem="7Bl-Rb-aKl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Sum-yH-WvE"/>
-                            <constraint firstItem="V47-HR-fbq" firstAttribute="leading" secondItem="GMh-4W-mOK" secondAttribute="leading" id="UHP-xl-tIk"/>
-                            <constraint firstItem="dv0-P6-qdm" firstAttribute="leading" secondItem="yvu-zI-Pcm" secondAttribute="leading" id="aR0-6G-8bW"/>
-                            <constraint firstItem="K4l-q3-Zem" firstAttribute="bottom" secondItem="26d-zX-vBb" secondAttribute="bottom" id="b9u-qR-WYY"/>
                             <constraint firstItem="hCA-R3-GEB" firstAttribute="leading" secondItem="dv0-P6-qdm" secondAttribute="trailing" constant="10" id="bpk-Bb-eCh"/>
                             <constraint firstItem="7Bl-Rb-aKl" firstAttribute="leading" secondItem="dv0-P6-qdm" secondAttribute="leading" id="dbW-51-sNp"/>
-                            <constraint firstItem="26d-zX-vBb" firstAttribute="top" secondItem="GMh-4W-mOK" secondAttribute="top" id="ga7-7U-Ag7"/>
                             <constraint firstItem="7Bl-Rb-aKl" firstAttribute="trailing" secondItem="V47-HR-fbq" secondAttribute="trailing" id="gez-e4-Gm9"/>
-                            <constraint firstItem="dv0-P6-qdm" firstAttribute="trailing" secondItem="K4l-q3-Zem" secondAttribute="trailing" id="gjz-iH-RaZ"/>
-                            <constraint firstItem="yvu-zI-Pcm" firstAttribute="top" secondItem="dv0-P6-qdm" secondAttribute="bottom" constant="10" id="hba-Pv-jK8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GMh-4W-mOK" secondAttribute="bottom" constant="71" id="hdO-E5-aJ2"/>
                             <constraint firstItem="hCA-R3-GEB" firstAttribute="top" secondItem="V47-HR-fbq" secondAttribute="top" id="jmg-wG-TBW"/>
                             <constraint firstItem="7Bl-Rb-aKl" firstAttribute="top" secondItem="i0V-oh-QRK" secondAttribute="bottom" id="jng-fd-vJS"/>
                             <constraint firstItem="dv0-P6-qdm" firstAttribute="top" secondItem="7Bl-Rb-aKl" secondAttribute="bottom" constant="10" id="jxJ-9f-iov"/>
                             <constraint firstItem="7Bl-Rb-aKl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vZh-RN-C4A"/>
-                            <constraint firstItem="hCA-R3-GEB" firstAttribute="leading" secondItem="26d-zX-vBb" secondAttribute="leading" id="wLQ-VA-eNc"/>
                             <constraint firstItem="hCA-R3-GEB" firstAttribute="bottom" secondItem="V47-HR-fbq" secondAttribute="bottom" id="wd2-Be-5sd"/>
                             <constraint firstItem="dv0-P6-qdm" firstAttribute="bottom" secondItem="hCA-R3-GEB" secondAttribute="bottom" id="x45-bF-wdE"/>
-                            <constraint firstItem="V47-HR-fbq" firstAttribute="trailing" secondItem="yvu-zI-Pcm" secondAttribute="trailing" id="xrn-dE-CYr"/>
                             <constraint firstAttribute="trailing" secondItem="i0V-oh-QRK" secondAttribute="trailing" id="zzs-x0-fOu"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="DpT-uq-wfC"/>
                     <connections>
-                        <outlet property="gastosTableView" destination="7Bl-Rb-aKl" id="oUD-J4-THR"/>
-                        <outlet property="ingresosTableView" destination="yvu-zI-Pcm" id="sSd-Zs-4Sq"/>
-                        <outlet property="montoGastoTextField" destination="hCA-R3-GEB" id="Szt-Bn-nMe"/>
-                        <outlet property="montoIngresoTextField" destination="26d-zX-vBb" id="sB7-EZ-pa1"/>
-                        <outlet property="nombreGastoTextField" destination="dv0-P6-qdm" id="z92-h0-Jsv"/>
-                        <outlet property="nombreIngresoTextField" destination="K4l-q3-Zem" id="4K0-06-fdf"/>
-                        <outlet property="viewBlue" destination="i0V-oh-QRK" id="ewx-9H-Tfn"/>
+                        <outlet property="montoTextField" destination="hCA-R3-GEB" id="UTr-fk-yPT"/>
+                        <outlet property="nombreTextField" destination="dv0-P6-qdm" id="aeP-8U-ta5"/>
+                        <outlet property="tableView" destination="7Bl-Rb-aKl" id="u5l-Ly-Yjh"/>
+                        <outlet property="viewBlue" destination="i0V-oh-QRK" id="LtB-2e-D0I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
