@@ -6,6 +6,7 @@
 //
 import UIKit
 import Charts
+import Foundation
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
@@ -34,6 +35,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         viewBlue.layer.cornerRadius = 10.0
         
         setupPieChart()
+        
+        //Carga de registros financieros almacenados
+        if let savedRegistros = loadRegistrosFinancieros() {
+                    registrosFinancieros = savedRegistros
+                }
     }
     
     // Creación de gráfico para mostrar el total de ingresos y gastos
@@ -72,14 +78,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func agregarRegistroFinanciero(_ sender: UIButton) {
         if let nombre = nombreTextField.text, let monto = Double(montoTextField.text ?? "") {
             let tipo: tipoRegistro = monto >= 0 ? .ingreso : .gasto
-            registrosFinancieros.append(registroFinanciero(nombre: nombre, monto: NSDecimalNumber(value: monto), tipo: tipo))
+            
+            do {
+                let nuevoRegistro = try registroFinanciero(from: Decoder, nombre: nombre, monto: NSDecimalNumber(value: monto), tipo: tipo)
+                registrosFinancieros.append(nuevoRegistro)
+            } catch {
+                // Maneja el error si la decodificación falla
+                print("Error al decodificar el registro financiero: \(error)")
+            }
+            
             // Actualiza el gráfico después de agregar un nuevo registro
             setupPieChart()
             tableView.reloadData()
             nombreTextField.text = ""
             montoTextField.text = ""
+            // Guardar los registros financieros actualizados
+            saveRegistrosFinancieros()
+        }
+
+    }
+    // Función para guardar registros financieros en UserDefaults
+    func saveRegistrosFinancieros() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(registrosFinancieros) {
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: "registrosFinancieros")
         }
     }
+
+    // Función para cargar registros financieros desde UserDefaults
+    func loadRegistrosFinancieros() -> [registroFinanciero]? {
+        if let registrosData = UserDefaults.standard.data(forKey: "registrosFinancieros") {
+            let decoder = JSONDecoder()
+            if let registros = try? decoder.decode([registroFinanciero].self, from: registrosData) {
+                return registros
+            }
+        }
+        return nil
+    }
+
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,13 +145,51 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 }
 
-struct registroFinanciero {
+
+struct registroFinanciero: Codable {
     var nombre: String
     var monto: NSDecimalNumber
     var tipo: tipoRegistro
+
+    enum CodingKeys: String, CodingKey {
+        case nombre
+        case monto
+        case tipo
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        nombre = try container.decode(String.self, forKey: .nombre)
+        monto = try NSDecimalNumber(decimal: try container.decode(Decimal.self, forKey: .monto))
+        tipo = try container.decode(tipoRegistro.self, forKey: .tipo)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(nombre, forKey: .nombre)
+        try container.encode(monto.decimalValue, forKey: .monto)
+        try container.encode(tipo, forKey: .tipo)
+    }
 }
 
-enum tipoRegistro {
+enum tipoRegistro: String, Codable {
     case ingreso
     case gasto
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let rawValue = try container.decode(String.self)
+
+        switch rawValue {
+        case "ingreso":
+            self = .ingreso
+        case "gasto":
+            self = .gasto
+        default:
+            throw DecodingError.dataCorruptedError(
+                in: container,
+                debugDescription: "Invalid tipoRegistro value: \(rawValue)"
+            )
+        }
+    }
 }
