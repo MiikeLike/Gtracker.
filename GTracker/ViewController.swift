@@ -78,7 +78,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func agregarRegistroFinanciero(_ sender: UIButton) {
         if let nombre = nombreTextField.text, let monto = Double(montoTextField.text ?? "") {
             let tipo: tipoRegistro = monto >= 0 ? .ingreso : .gasto
-            let nuevoRegistro = registroFinanciero(nombre: nombre, monto: NSDecimalNumber(value: monto), tipo: tipoRegistro)
+            let nuevoRegistro = registroFinanciero(nombre: nombre, monto: NSDecimalNumber(decimal: Decimal(string: "\(monto)") ?? 0), tipo: tipo)
             registrosFinancieros.append(nuevoRegistro)
             // Actualiza el gráfico después de agregar un nuevo registro
             setupPieChart()
@@ -152,7 +152,7 @@ struct registroFinanciero: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         nombre = try container.decode(String.self, forKey: .nombre)
-        monto = try NSDecimalNumber(decimal: try container.decode(Decimal.self, forKey: .monto))
+        monto = try NSDecimalNumber(decimal:  container.decode(Decimal.self, forKey: .monto))
         tipo = try container.decode(tipoRegistro.self, forKey: .tipo)
     }
 
@@ -185,3 +185,11 @@ enum tipoRegistro: String, Codable {
         }
     }
 }
+
+
+
+
+
+
+
+
