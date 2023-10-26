@@ -73,11 +73,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if let nombre = nombreTextField.text, let monto = Double(montoTextField.text ?? "") {
             let tipo: tipoRegistro = monto >= 0 ? .ingreso : .gasto
             registrosFinancieros.append(registroFinanciero(nombre: nombre, monto: NSDecimalNumber(value: monto), tipo: tipo))
+            // Actualiza el gráfico después de agregar un nuevo registro
+            setupPieChart()
             tableView.reloadData()
             nombreTextField.text = ""
             montoTextField.text = ""
         }
     }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return registrosFinancieros.count
@@ -87,7 +90,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let registro = registrosFinancieros[indexPath.row]
         
-        cell.textLabel?.text = "\(registro.nombre): \(registro.tipo == .ingreso ? "+" : "")\(registro.monto)€"
+        cell.textLabel?.text = "\(registro.nombre): \(registro.tipo == .ingreso ? "+" : "-")\(registro.monto)€"
         cell.textLabel?.textColor = registro.tipo == .ingreso ? .green : .red
         
         return cell

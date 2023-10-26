@@ -89,6 +89,7 @@
                     <connections>
                         <outlet property="montoTextField" destination="hCA-R3-GEB" id="UTr-fk-yPT"/>
                         <outlet property="nombreTextField" destination="dv0-P6-qdm" id="aeP-8U-ta5"/>
+                        <outlet property="pieChartView" destination="Dqd-s0-3KC" id="Qfc-Ik-DWY"/>
                         <outlet property="tableView" destination="7Bl-Rb-aKl" id="u5l-Ly-Yjh"/>
                         <outlet property="viewBlue" destination="i0V-oh-QRK" id="LtB-2e-D0I"/>
                     </connections>
@@ -187,7 +188,7 @@
     </scenes>
     <resources>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
