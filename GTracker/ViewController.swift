@@ -78,15 +78,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func agregarRegistroFinanciero(_ sender: UIButton) {
         if let nombre = nombreTextField.text, let monto = Double(montoTextField.text ?? "") {
             let tipo: tipoRegistro = monto >= 0 ? .ingreso : .gasto
-            
-            do {
-                let nuevoRegistro = try registroFinanciero(from: Decoder, nombre: nombre, monto: NSDecimalNumber(value: monto), tipo: tipo)
-                registrosFinancieros.append(nuevoRegistro)
-            } catch {
-                // Maneja el error si la decodificación falla
-                print("Error al decodificar el registro financiero: \(error)")
-            }
-            
+            let nuevoRegistro = registroFinanciero(nombre: nombre, monto: NSDecimalNumber(value: monto), tipo: tipoRegistro)
+            registrosFinancieros.append(nuevoRegistro)
             // Actualiza el gráfico después de agregar un nuevo registro
             setupPieChart()
             tableView.reloadData()
@@ -95,7 +88,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             // Guardar los registros financieros actualizados
             saveRegistrosFinancieros()
         }
-
     }
     // Función para guardar registros financieros en UserDefaults
     func saveRegistrosFinancieros() {
