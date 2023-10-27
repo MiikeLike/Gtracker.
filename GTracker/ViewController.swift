@@ -68,7 +68,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // Creación de función para que el textField de Dinero solo entren datos tipo String
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == montoTextField {
-            let allowedCharacters = CharacterSet.decimalDigits // Solo números
+            // Crear un conjunto de caracteres permitidos que incluya números y el signo negativo
+            var allowedCharacters = CharacterSet.decimalDigits
+            allowedCharacters.insert(charactersIn: "-")
+            
+            // Verificar si los caracteres introducidos están en el conjunto permitido
             let characterSet = CharacterSet(charactersIn: string)
             return allowedCharacters.isSuperset(of: characterSet)
         }
