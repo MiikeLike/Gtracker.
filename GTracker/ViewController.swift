@@ -42,6 +42,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
     }
     
+    
+    
     // Creación de gráfico para mostrar el total de ingresos y gastos
     
     func setupPieChart() {
@@ -60,9 +62,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Configurar el gráfico de pastel
         pieChartView.data = data
         pieChartView.drawEntryLabelsEnabled = false // No mostrar etiquetas en las secciones
-        pieChartView.centerText = "Resumen Financiero"
+        pieChartView.centerText = "Resumen"
         pieChartView.holeRadiusPercent = 0.4 // Tamaño del agujero en el centro (opcional)
-        pieChartView.transparentCircleRadiusPercent = 0.5 // Tamaño del círculo transparente alrededor del gráfico (opcional)
+        pieChartView.transparentCircleRadiusPercent = 0.4 // Tamaño del círculo transparente alrededor del gráfico (opcional)
     }
     
     // Creación de función para que el textField de Dinero solo entren datos tipo String
