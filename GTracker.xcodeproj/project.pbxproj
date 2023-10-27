@@ -53,10 +53,10 @@
 		6EFD4DF32AE2A93000ECBC14 = {
 			isa = PBXGroup;
 			children = (
-				6EFD4DFE2AE2A93000ECBC14 /* GTracker */,
 				6EFD4DFD2AE2A93000ECBC14 /* Products */,
 				CFC78369C2C091608F51E23C /* Pods */,
 				08D10B4D71AB8877C1949CA5 /* Frameworks */,
+				6EFD4DFE2AE2A93000ECBC14 /* GTracker */,
 			);
 			sourceTree = "<group>";
 		};
