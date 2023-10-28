@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var viewBlue: UIImageView!
     @IBOutlet weak var pieChartView: PieChartView!
     var registrosFinancieros: [registroFinanciero] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -35,6 +35,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         viewBlue.layer.cornerRadius = 10.0
         
         setupPieChart()
+        
+        
+        
         
         //Carga de registros financieros almacenados
         if let savedRegistros = loadRegistrosFinancieros() {
@@ -65,6 +68,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         pieChartView.centerText = "Resumen"
         pieChartView.holeRadiusPercent = 0.4 // Tamaño del agujero en el centro (opcional)
         pieChartView.transparentCircleRadiusPercent = 0.4 // Tamaño del círculo transparente alrededor del gráfico (opcional)
+    }
+    @IBAction func showCustomAlert(_ sender: Any) {
+        let alert = UIAlertController(title: "Título de la alerta", message: "Mensaje de la alerta", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel) { action in
+            print("Cancelado")
+        }
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            print("Aceptado")
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     // Creación de función para que el textField de Dinero solo entren datos tipo String
