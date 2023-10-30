@@ -35,18 +35,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         viewBlue.layer.cornerRadius = 10.0
         
         setupPieChart()
-        
-        
-        
-        
+
         //Carga de registros financieros almacenados
         if let savedRegistros = loadRegistrosFinancieros() {
                     registrosFinancieros = savedRegistros
                 }
+        // MARK: UIBarButtonItem
+        
+        let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "book.closed"),  style: UIBarButtonItem.Style.done, target: self, action:#selector(self.myRightSideBarButtonItemTapped))
+         self.navigationItem.rightBarButtonItem = rightBarButton
+         
+         let leftBarButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: UIBarButtonItem.Style.done, target: self, action: #selector(self.myLeftSideBarButtonItemTapped))
+         self.navigationItem.leftBarButtonItem = leftBarButton
     }
-    
-    
-    
+    @objc func myRightSideBarButtonItemTapped(_ sender:UIBarButtonItem!){
+        NotificationCenter.default.post(name: Notification.Name("CalculatorNotification"), object: nil)
+     print("myRightSideBarButtonItemTapped")
+     }
+     @objc func myLeftSideBarButtonItemTapped(_ sender:UIBarButtonItem!) {
+         let alert = UIAlertController(title: "Información", message: "-Aplicación desarrollada por: \nMikel Valle Pajuelo \n -Procesos usados: CocoaPods, MVC, Inyección de dependencías, StoryBoard.", preferredStyle: .alert)
+                     alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { action in
+                         print("tapped alertAdd")
+                     }))
+                     present(alert, animated: true)
+     }
     // Creación de gráfico para mostrar el total de ingresos y gastos
     
     func setupPieChart() {
@@ -69,22 +81,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         pieChartView.holeRadiusPercent = 0.4 // Tamaño del agujero en el centro (opcional)
         pieChartView.transparentCircleRadiusPercent = 0.4 // Tamaño del círculo transparente alrededor del gráfico (opcional)
     }
-    @IBAction func showCustomAlert(_ sender: Any) {
-        let alert = UIAlertController(title: "Título de la alerta", message: "Mensaje de la alerta", preferredStyle: .alert)
-        
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel) { action in
-            print("Cancelado")
-        }
-        
-        let okAction = UIAlertAction(title: "OK", style: .default) { action in
-            print("Aceptado")
-        }
-        
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        
-        self.present(alert, animated: true, completion: nil)
-    }
+
     
     // Creación de función para que el textField de Dinero solo entren datos tipo String
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
